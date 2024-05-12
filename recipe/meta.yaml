@@ -1,5 +1,5 @@
 {% set name = "iota" %}
-{% set version = "1.4.20" %}
+{% set version = "1.5.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 657476e91d3d16b98eaf723d360547c4911329d065dda256be4e2950cdd11602
+  sha256: 0474470057885250b47b461b08cf81e85e13ef22009fd17ce782f02c9cd365f6
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - iota = iota.command_line.iota_gui_launch:entry_point
     - iota.filter_pickles = iota.command_line.iota_filter_pickles:entry_point
