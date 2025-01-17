@@ -22,18 +22,21 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - numpy
     - matplotlib-base
-    - python
+    - python >={{ python_min }}
     - six
     - wxpython
 
 test:
   imports:
     - iota
+  requires:
+    - python {{ python_min }}
 
 about:
   home: https://github.com/ssrl-px/iota
