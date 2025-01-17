@@ -1,13 +1,13 @@
 {% set name = "iota" %}
-{% set version = "1.4.20" %}
+{% set version = "1.5.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 657476e91d3d16b98eaf723d360547c4911329d065dda256be4e2950cdd11602
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 0474470057885250b47b461b08cf81e85e13ef22009fd17ce782f02c9cd365f6
 
 build:
   noarch: python
@@ -22,18 +22,21 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - numpy
     - matplotlib-base
-    - python
+    - python >={{ python_min }}
     - six
     - wxpython
 
 test:
   imports:
     - iota
+  requires:
+    - python {{ python_min }}
 
 about:
   home: https://github.com/ssrl-px/iota
